@@ -1,8 +1,11 @@
 import "./style.css"
 
 document.querySelector("body").innerHTML = `
+    <div class="overlay"></div>
     <header>
       <img src="/logo.svg" alt="logo" />
+      <div class="mobile-menu" id="menu"><ion-icon name="menu-outline"></ion-icon></div>
+      <div class="mobile-menu" id="close-menu"><ion-icon name="close-outline"></ion-icon></div>
       <nav class="navbar">
         <ul>
           <li><a href="#">Home</a></li>
@@ -14,8 +17,20 @@ document.querySelector("body").innerHTML = `
       </nav>
       <button class="request">Request Invite</button>
     </header>
+    <div class="mobile-navigation"> 
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
     <main>
       <div class="top">
+        <div class="mockups-mobile">
+          <img src="/image-mockups.png" alt="smartphones with easybank's app" />
+        </div>
         <div class="explanation">
           <div class="title">Next generation digital banking</div>
             <p class="text">
@@ -25,7 +40,6 @@ document.querySelector("body").innerHTML = `
           <button class="request">Request Invite</button>
         </div>
         <div class="mockups">
-          <div class="bg-intro"></div>
           <img src="/image-mockups.png" alt="smartphones with easybank's app" />
         </div>
       </div>
@@ -181,3 +195,30 @@ document.querySelector("body").innerHTML = `
       </div>
     </footer>
 `
+let menu = document.querySelector("#menu")
+let nav = document.querySelector(".mobile-navigation")
+let closemenu = document.querySelector("#close-menu")
+let overlay = document.querySelector(".overlay")
+
+menu.onclick = () => {
+  menu.classList.add("hide")
+  closemenu.classList.add("show")
+  nav.classList.add("show")
+  overlay.classList.add("show")
+}
+
+overlay.onclick = (e) => {
+  if (e.target !== menu) {
+    nav.classList.remove("show")
+    overlay.classList.remove("show")
+    closemenu.classList.remove("show")
+    menu.classList.remove("hide")
+  }
+}
+
+closemenu.onclick = () => {
+  nav.classList.remove("show")
+  overlay.classList.remove("show")
+  closemenu.classList.remove("show")
+  menu.classList.remove("hide")
+}
