@@ -330,7 +330,11 @@ ion-icon:hover {
   footer {
     overflow-x: hidden;
   }
-
+  
+  body {
+    max-width: auto;
+  }
+  
   header nav {
     display: none;
   }
